@@ -7,6 +7,8 @@ import About from './components/About';
 import Social from './components/Social';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
+import AnimatePhoto from './components/AnimatePhoto';
+import VideoShowcase from './components/VideoShowcase';
 
 const App: React.FC = () => {
   return (
@@ -24,6 +26,8 @@ const App: React.FC = () => {
       <main className="relative z-10">
         <Hero />
         <Portfolio />
+        <VideoShowcase />
+        <AnimatePhoto />
         <About />
         <Contact />
         <Social />

@@ -25,9 +25,9 @@ const AnimatePhoto: React.FC = () => {
   const generateVideo = async () => {
     if (!selectedImage) return;
 
-    // Check for API key as per Veo requirements
-    if (!(await window.aistudio.hasSelectedApiKey())) {
-      await window.aistudio.openSelectKey();
+    // Check for API key as per Veo requirements. Using non-null assertion as aistudio is assumed to be accessible per requirements.
+    if (!(await window.aistudio!.hasSelectedApiKey())) {
+      await window.aistudio!.openSelectKey();
       // Proceed assuming success as per race condition instructions
     }
 
@@ -81,7 +81,8 @@ const AnimatePhoto: React.FC = () => {
       console.error('Generation failed:', error);
       if (error.message?.includes("Requested entity was not found")) {
         setStatusMessage('API Key issue. Please re-select your key.');
-        await window.aistudio.openSelectKey();
+        // Using non-null assertion as aistudio is assumed to be accessible per environment documentation.
+        await window.aistudio!.openSelectKey();
       } else {
         setStatusMessage('Something went wrong. Please try again.');
       }
