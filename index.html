@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vicky | Photographer & Storyteller</title>
     
-    <!-- SEO & Social Sharing (Make it functional for the web) -->
+    <!-- SEO & Social Sharing -->
     <meta name="description" content="Vicky's photography portfolio. Capturing travel, nature, and cinematic stories through a professional lens." />
     <meta property="og:title" content="Vicky | Photographer & Storyteller" />
     <meta property="og:description" content="Explore cinematic visual narratives and travel stories." />
@@ -30,7 +30,6 @@
         font-family: 'Playfair Display', serif;
       }
       
-      /* Film Grain Overlay - Tactile Photography Feel */
       .grain {
         position: fixed;
         top: 0;
@@ -43,7 +42,6 @@
         background-image: url("https://www.transparenttextures.com/patterns/stardust.png");
       }
 
-      /* Main Background Image - Aesthetic Photographer Silhouette */
       .page-bg-image {
         position: fixed;
         inset: 0;
@@ -56,7 +54,6 @@
         pointer-events: none;
       }
 
-      /* Subtle Paper Texture Layer */
       .paper-overlay {
         position: fixed;
         inset: 0;
@@ -85,7 +82,6 @@
         margin-bottom: 1.5rem;
       }
 
-      /* Background Typography - Echoing the Playfair Display Font */
       .bg-text-float {
         position: fixed;
         font-size: 60vw;
@@ -99,7 +95,6 @@
         font-weight: 700;
       }
 
-      /* Floating Illustration Element */
       .floating-illus {
         position: fixed;
         width: 300px;
@@ -113,10 +108,11 @@
   <script type="importmap">
 {
   "imports": {
+    "@google/genai": "https://esm.sh/@google/genai@^1.37.0",
+    "vite": "https://esm.sh/vite@^7.3.1",
     "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
     "react/": "https://esm.sh/react@^19.2.3/",
-    "react": "https://esm.sh/react@^19.2.3",
-    "@google/genai": "https://esm.sh/@google/genai@^1.37.0"
+    "react": "https://esm.sh/react@^19.2.3"
   }
 }
 </script>
@@ -126,5 +122,8 @@
     <div class="page-bg-image"></div>
     <div class="paper-overlay"></div>
     <div id="root"></div>
+    
+    <!-- Entry Point Script -->
+    <script type="module" src="/index.tsx"></script>
   </body>
 </html>
