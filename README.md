@@ -1,43 +1,45 @@
 
-# Vicky Photography Portfolio
+# 📸 Vicky Photography Portfolio
 
-A premium, minimal photography portfolio featuring a Pinterest-style masonry layout and an AI-powered contact form.
+A premium, minimal photography portfolio featuring a Pinterest-style masonry layout, cinematic animations, and Gemini AI integration.
 
-## Hosting the Website
+## 🚀 Quick Start: Hosting Your Site
 
-This project is built to be hosted on any modern static hosting platform.
+This project is optimized for "No-Build" deployment, meaning you can serve it directly as static files.
 
-### Quick Deployment (Recommended)
+### Option 1: Vercel (Recommended)
+Vercel is the best platform for this portfolio. It offers global CDN performance and easy environment variable management.
 
-1. **Vercel**: 
-   - Push this code to a GitHub repository.
-   - Import the repository into [Vercel](https://vercel.com).
-   - Add an environment variable named `API_KEY` and set it to your Gemini API key (from [Google AI Studio](https://aistudio.google.com/)).
-   - Vercel will automatically handle the build and hosting.
+1.  **Upload to GitHub**: Create a new repository and push your files.
+2.  **Import to Vercel**: Go to [vercel.com](https://vercel.com), click "New Project", and select your repo.
+3.  **Configure Environment Variables**:
+    - Under **Settings > Environment Variables**, add a key named `API_KEY`.
+    - Set the value to your Google Gemini API Key from [Google AI Studio](https://aistudio.google.com/).
+4.  **Deploy**: Click "Deploy". No build command is required.
 
-2. **Netlify**:
-   - Similar to Vercel, connect your repo.
-   - Set the `API_KEY` in the Site Settings > Environment Variables.
+### Option 2: Netlify
+1.  **Drag & Drop**: You can literally drag this project folder into the Netlify "Drop" zone.
+2.  **Env Vars**: Go to **Site Configuration > Environment Variables** to add your `API_KEY`.
 
-## How the "Backend" Works
+### Option 3: GitHub Pages
+1.  **Enable Pages**: Go to your Repo Settings > Pages.
+2.  **Source**: Set to "Deploy from a branch" (usually `main`).
+3.  **Note**: GitHub Pages does not support server-side environment variables (`process.env.API_KEY`). For the contact form to work on GH Pages, you would need to hardcode the key (not recommended) or use a proxy. **Vercel/Netlify are much better for this reason.**
 
-The contact form uses a **Client-Side Backend** logic via the Google Gemini API. 
-Instead of sending a simple email, it "processes" the message to create a personalized AI response for the user, demonstrating a high-tech, modern studio experience.
+## 🛠 Features
+- **Zero-Build Architecture**: Uses ESM Import Maps for lightning-fast loading without a complex build pipeline.
+- **Masonry Layout**: A fluid, responsive Pinterest-style grid.
+- **Interactive Lightbox**: Full-screen viewing with "Like" and "Share" functionality.
+- **Persistent Likes**: Your favorite photos stay liked even after refreshing (using LocalStorage).
+- **AI-Powered Contact Form**: Uses Gemini 3 Flash to generate personalized confirmation messages.
+- **Veo Video Generation**: Integrated cinematic video generation for the "Animate Photo" feature.
 
-### For Real Email Delivery
-To receive actual emails in your inbox, you can replace the `handleSubmit` logic in `components/Contact.tsx` with a service like **Formspree** or **Netlify Forms**:
+## 🔑 API Configuration
+This app requires a **Google Gemini API Key**.
+- For **Contact Form**: Uses the `API_KEY` defined in your hosting provider's environment variables.
+- For **Veo Video Generation**: The app uses the `window.aistudio.openSelectKey()` protocol, allowing users to select their own paid billing projects for heavy video workloads.
 
-```javascript
-// Example Formspree integration
-const response = await fetch('https://formspree.io/f/your-form-id', {
-  method: 'POST',
-  body: JSON.stringify(formData),
-  headers: { 'Accept': 'application/json' }
-});
-```
-
-## Features
-- **Masonry Grid**: Fluid Pinterest-style layout for photos.
-- **Smart Form**: AI-generated confirmations.
-- **Fully Responsive**: Optimized for mobile, tablet, and desktop.
-- **Minimal Aesthetic**: Focused on typography and photography.
+## 🎨 Aesthetic Guidelines
+- **Typography**: Playfair Display (Serif) for headings, Inter (Sans) for body.
+- **Colors**: `#F8F8F6` (Alabaster), `#1C1C1C` (Ebony), `#7A8F7A` (Sage).
+- **Textures**: Subtle film grain and paper textures applied via CSS overlays.

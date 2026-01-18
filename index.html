@@ -15,10 +15,48 @@
         background-color: #F8F8F6;
         color: #1C1C1C;
         scroll-behavior: smooth;
+        overflow-x: hidden;
       }
       h1, h2, h3, .serif {
         font-family: 'Playfair Display', serif;
       }
+      
+      /* Film Grain Overlay - Tactile Photography Feel */
+      .grain {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 9999;
+        pointer-events: none;
+        opacity: 0.05;
+        background-image: url("https://www.transparenttextures.com/patterns/stardust.png");
+      }
+
+      /* Main Background Image - Aesthetic Photographer Silhouette */
+      .page-bg-image {
+        position: fixed;
+        inset: 0;
+        z-index: -2;
+        background-image: url('https://images.unsplash.com/photo-1542038784456-1ea8e935640e?q=80&w=2000&auto=format&fit=crop');
+        background-size: cover;
+        background-position: center;
+        opacity: 0.03;
+        filter: grayscale(100%);
+        pointer-events: none;
+      }
+
+      /* Subtle Paper Texture Layer */
+      .paper-overlay {
+        position: fixed;
+        inset: 0;
+        z-index: -1;
+        background-image: url('https://www.transparenttextures.com/patterns/p6.png');
+        opacity: 0.3;
+        pointer-events: none;
+      }
+
       .masonry-grid {
         column-count: 1;
         column-gap: 1.5rem;
@@ -37,6 +75,31 @@
         break-inside: avoid;
         margin-bottom: 1.5rem;
       }
+
+      /* Background Typography - Echoing the Playfair Display Font */
+      .bg-text-float {
+        position: fixed;
+        font-size: 60vw;
+        font-family: 'Playfair Display', serif;
+        color: #7A8F7A;
+        opacity: 0.03;
+        line-height: 1;
+        z-index: -1;
+        pointer-events: none;
+        user-select: none;
+        font-weight: 700;
+      }
+
+      /* Floating Illustration Element */
+      .floating-illus {
+        position: fixed;
+        width: 300px;
+        height: 300px;
+        opacity: 0.05;
+        z-index: -1;
+        pointer-events: none;
+        filter: contrast(0.5);
+      }
     </style>
   <script type="importmap">
 {
@@ -50,6 +113,9 @@
 </script>
 </head>
   <body>
+    <div class="grain"></div>
+    <div class="page-bg-image"></div>
+    <div class="paper-overlay"></div>
     <div id="root"></div>
   </body>
 </html>
