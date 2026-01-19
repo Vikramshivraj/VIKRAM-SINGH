@@ -52,6 +52,8 @@ const Lightbox: React.FC<LightboxProps> = ({
 
   const handleClose = () => {
     setIsExiting(true);
+    // Explicitly restore scroll on handleClose to prevent "frozen" page during transition
+    document.body.style.overflow = '';
     setTimeout(() => {
       onClose();
       setIsExiting(false);
@@ -64,24 +66,25 @@ const Lightbox: React.FC<LightboxProps> = ({
 
   return (
     <div 
-      className={`fixed inset-0 z-[100] bg-black/95 flex items-center justify-center p-4 md:p-10 transition-opacity duration-300 ${
+      className={`fixed inset-0 z-[200] bg-black/95 flex items-center justify-center p-4 md:p-10 transition-opacity duration-300 ${
         isExiting || !photo ? 'opacity-0 pointer-events-none' : 'opacity-100 pointer-events-auto'
       }`}
       onClick={handleClose}
     >
+      {/* Prominent Cross Icon (Close Button) */}
       <button 
-        className="absolute top-6 right-6 z-[110] text-white/60 hover:text-white transition-all transform hover:scale-110 p-2"
+        className="absolute top-6 right-6 md:top-10 md:right-10 z-[210] text-white/60 hover:text-white transition-all transform hover:scale-110 p-4 bg-white/5 hover:bg-white/10 rounded-full group"
         onClick={handleClose}
         aria-label="Close Lightbox"
       >
-        <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <svg className="w-8 h-8 md:w-10 md:h-10 transition-transform group-hover:rotate-90 duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M6 18L18 6M6 6l12 12" />
         </svg>
       </button>
 
       {hasPrev && (
         <button 
-          className="absolute left-4 md:left-10 z-[110] text-white/30 hover:text-white transition-all transform hover:scale-110 p-4 bg-white/5 hover:bg-white/10 rounded-full"
+          className="absolute left-4 md:left-10 z-[210] text-white/30 hover:text-white transition-all transform hover:scale-110 p-4 bg-white/5 hover:bg-white/10 rounded-full"
           onClick={(e) => { e.stopPropagation(); onPrev(); }}
           aria-label="Previous Photo"
         >
@@ -93,7 +96,7 @@ const Lightbox: React.FC<LightboxProps> = ({
 
       {hasNext && (
         <button 
-          className="absolute right-4 md:right-10 z-[110] text-white/30 hover:text-white transition-all transform hover:scale-110 p-4 bg-white/5 hover:bg-white/10 rounded-full"
+          className="absolute right-4 md:right-10 z-[210] text-white/30 hover:text-white transition-all transform hover:scale-110 p-4 bg-white/5 hover:bg-white/10 rounded-full"
           onClick={(e) => { e.stopPropagation(); onNext(); }}
           aria-label="Next Photo"
         >
