@@ -36,7 +36,7 @@ const Header: React.FC = () => {
     }
   };
 
-  // Simplified navigation items to remove Reels and Animate
+  // Navigation items simplified to match the current page layout
   const navItems = ['Work', 'About', 'Contact'];
 
   return (
