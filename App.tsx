@@ -9,17 +9,18 @@ import Footer from './components/Footer';
 
 const App: React.FC = () => {
   return (
-    <div className="relative min-h-screen">
-      {/* Aesthetic Illustration / Cartoon Element */}
+    <div className="relative min-h-screen selection:bg-[#7A8F7A] selection:text-white">
+      {/* Aesthetic Illustration */}
       <div className="fixed top-1/4 right-10 floating-illus animate-[float_10s_infinite_ease-in-out] opacity-20 md:opacity-100">
         <img 
           src="https://cdni.iconscout.com/illustration/premium/thumb/photographer-working-in-studio-illustration-download-in-svg-png-gif-file-formats--camera-photography-professional-lifestyle-pack-people-illustrations-6453676.png" 
           alt="Aesthetic Illustration"
-          className="w-48 h-48 md:w-64 md:h-64 object-contain grayscale"
+          className="w-48 h-48 md:w-64 md:h-64 object-contain grayscale pointer-events-none"
         />
       </div>
 
       <Header />
+      
       <main className="relative z-10">
         <Hero />
         <Portfolio />
@@ -27,6 +28,7 @@ const App: React.FC = () => {
         <Contact />
         <Social />
       </main>
+      
       <Footer />
 
       <style>{`

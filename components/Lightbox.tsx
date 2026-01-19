@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from 'react';
 import { Photo } from '../types';
 
@@ -40,20 +39,23 @@ const Lightbox: React.FC<LightboxProps> = ({
       if (e.key === 'ArrowLeft' && hasPrev) onPrev();
     };
 
-    if (photo) {
+    if (photo && !isExiting) {
       window.addEventListener('keydown', handleKeyDown);
       document.body.style.overflow = 'hidden';
     }
 
     return () => {
       window.removeEventListener('keydown', handleKeyDown);
-      document.body.style.overflow = 'unset';
+      document.body.style.overflow = '';
     };
-  }, [photo, hasNext, hasPrev, onNext, onPrev]);
+  }, [photo, hasNext, hasPrev, onNext, onPrev, isExiting]);
 
   const handleClose = () => {
     setIsExiting(true);
-    setTimeout(onClose, 300);
+    setTimeout(() => {
+      onClose();
+      setIsExiting(false);
+    }, 300);
   };
 
   if (!photo && !isExiting) return null;
@@ -63,11 +65,10 @@ const Lightbox: React.FC<LightboxProps> = ({
   return (
     <div 
       className={`fixed inset-0 z-[100] bg-black/95 flex items-center justify-center p-4 md:p-10 transition-opacity duration-300 ${
-        isExiting ? 'opacity-0' : 'opacity-100 animate-[fadeIn_0.3s_ease-out]'
+        isExiting || !photo ? 'opacity-0 pointer-events-none' : 'opacity-100 pointer-events-auto'
       }`}
       onClick={handleClose}
     >
-      {/* Close Button */}
       <button 
         className="absolute top-6 right-6 z-[110] text-white/60 hover:text-white transition-all transform hover:scale-110 p-2"
         onClick={handleClose}
@@ -78,7 +79,6 @@ const Lightbox: React.FC<LightboxProps> = ({
         </svg>
       </button>
 
-      {/* Navigation Arrows */}
       {hasPrev && (
         <button 
           className="absolute left-4 md:left-10 z-[110] text-white/30 hover:text-white transition-all transform hover:scale-110 p-4 bg-white/5 hover:bg-white/10 rounded-full"
@@ -135,7 +135,6 @@ const Lightbox: React.FC<LightboxProps> = ({
               <h2 className="text-3xl md:text-4xl serif leading-tight">{photo?.title}</h2>
             </div>
             
-            {/* Like Button in Lightbox */}
             <button
               onClick={() => photo && onToggleLike(photo.id)}
               className={`flex-shrink-0 w-12 h-12 rounded-full border flex items-center justify-center transition-all duration-500 ${

@@ -21,10 +21,15 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
     <style>
+      :root {
+        --bg-color: #F8F8F6;
+        --text-color: #1C1C1C;
+        --accent-color: #7A8F7A;
+      }
       body {
         font-family: 'Inter', sans-serif;
-        background-color: #F8F8F6;
-        color: #1C1C1C;
+        background-color: var(--bg-color);
+        color: var(--text-color);
         scroll-behavior: smooth;
         overflow-x: hidden;
       }
@@ -40,7 +45,7 @@
         height: 100%;
         z-index: 9999;
         pointer-events: none;
-        opacity: 0.05;
+        opacity: 0.04;
         background-image: url("https://www.transparenttextures.com/patterns/stardust.png");
       }
 
@@ -61,7 +66,7 @@
         inset: 0;
         z-index: -1;
         background-image: url('https://www.transparenttextures.com/patterns/p6.png');
-        opacity: 0.3;
+        opacity: 0.2;
         pointer-events: none;
       }
 
@@ -82,19 +87,6 @@
       .masonry-item {
         break-inside: avoid;
         margin-bottom: 1.5rem;
-      }
-
-      .bg-text-float {
-        position: fixed;
-        font-size: 60vw;
-        font-family: 'Playfair Display', serif;
-        color: #7A8F7A;
-        opacity: 0.03;
-        line-height: 1;
-        z-index: -1;
-        pointer-events: none;
-        user-select: none;
-        font-weight: 700;
       }
 
       .floating-illus {
