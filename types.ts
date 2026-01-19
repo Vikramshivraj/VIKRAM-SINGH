@@ -1,4 +1,3 @@
-
 export type Category = 'All' | 'Travel' | 'Nature' | 'Cinematic' | 'Street';
 
 export interface Photo {

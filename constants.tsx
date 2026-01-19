@@ -1,39 +1,6 @@
-
 import { Photo, Category } from './types';
 
 export const CATEGORIES: Category[] = ['All', 'Travel', 'Nature', 'Cinematic', 'Street'];
-
-export interface Video {
-  id: string;
-  url: string;
-  thumbnail: string;
-  title: string;
-  description: string;
-}
-
-export const VIDEOS: Video[] = [
-  {
-    id: 'v1',
-    url: 'https://cdn.pixabay.com/video/2021/08/05/84041-584732104_large.mp4',
-    thumbnail: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=1000&auto=format&fit=crop',
-    title: 'The Silent Peaks',
-    description: 'A drone exploration of the untouched Himalayan ranges during golden hour.'
-  },
-  {
-    id: 'v2',
-    url: 'https://cdn.pixabay.com/video/2022/10/16/135118-760851174_large.mp4',
-    thumbnail: 'https://images.unsplash.com/photo-1471922694854-ff1b63b20054?q=80&w=1000&auto=format&fit=crop',
-    title: 'Coastal Serenity',
-    description: 'Atmospheric slow-motion captures of the Goan coastline.'
-  },
-  {
-    id: 'v3',
-    url: 'https://cdn.pixabay.com/video/2024/05/26/213702_large.mp4',
-    thumbnail: 'https://images.unsplash.com/photo-1449824913935-59a10b8d2000?q=80&w=1000&auto=format&fit=crop',
-    title: 'Urban Pulse',
-    description: 'Behind-the-scenes: Capturing the chaotic beauty of Mumbai streets.'
-  }
-];
 
 export const PHOTOS: Photo[] = [
   {

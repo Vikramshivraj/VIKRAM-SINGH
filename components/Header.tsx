@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 
 const Header: React.FC = () => {
@@ -37,6 +36,7 @@ const Header: React.FC = () => {
     }
   };
 
+  // Simplified navigation items to remove Reels and Animate
   const navItems = ['Work', 'About', 'Contact'];
 
   return (
@@ -69,7 +69,7 @@ const Header: React.FC = () => {
           </div>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-10">
+          <nav className="hidden lg:flex items-center gap-10">
             {navItems.map((item) => (
               <a
                 key={item}
