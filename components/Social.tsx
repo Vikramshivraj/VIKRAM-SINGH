@@ -1,4 +1,3 @@
-
 import React from 'react';
 
 const Social: React.FC = () => {
@@ -24,15 +23,15 @@ const Social: React.FC = () => {
   ];
 
   return (
-    <section className="py-24 px-6 bg-[#EEF2EE] relative overflow-hidden">
+    <section id="social" className="py-24 px-6 bg-[var(--bg-color)] relative overflow-hidden transition-theme">
       {/* Background Pattern Layer */}
       <div className="absolute inset-0 opacity-[0.03] pointer-events-none" style={{ backgroundImage: `url("https://www.transparenttextures.com/patterns/cubes.png")` }}></div>
       
       <div className="max-w-4xl mx-auto relative group">
-        <div className="relative z-10 bg-[#F8F8F6]/60 backdrop-blur-sm p-12 md:p-16 border border-black/20 rounded-[3rem] shadow-sm text-center space-y-12 transition-all duration-700 group-hover:bg-[#F8F8F6]/80">
+        <div className="relative z-10 bg-[var(--glass-bg)] backdrop-blur-sm p-12 md:p-16 border border-[var(--glass-border)] rounded-[3rem] shadow-sm text-center space-y-12 transition-all duration-700 group-hover:bg-[var(--glass-border)]">
           <div className="space-y-4">
             <span className="text-[10px] uppercase tracking-[0.5em] font-bold text-[#7A8F7A]">Stay in the Loop</span>
-            <h2 className="text-3xl md:text-5xl serif italic">Let’s connect & collaborate</h2>
+            <h2 className="text-3xl md:text-5xl serif italic text-[var(--text-color)]">Let’s connect & collaborate</h2>
           </div>
 
           <div className="flex justify-center gap-10 md:gap-16">
@@ -46,10 +45,7 @@ const Social: React.FC = () => {
                 aria-label={social.name}
               >
                 <div 
-                  className="w-16 h-16 md:w-20 md:h-20 rounded-2xl bg-white border shadow-sm flex items-center justify-center transition-all duration-500 transform group-hover:-translate-y-3 group-hover:shadow-xl group-hover:rotate-3"
-                  style={{ 
-                    borderColor: `${social.color}22`,
-                  }}
+                  className="w-16 h-16 md:w-20 md:h-20 rounded-2xl bg-[var(--bg-color)] border border-[var(--glass-border)] shadow-sm flex items-center justify-center transition-all duration-500 transform group-hover:-translate-y-3 group-hover:shadow-xl group-hover:rotate-3"
                 >
                   <svg 
                     className="w-7 h-7 md:w-8 md:h-8 transition-all duration-500 group-hover:scale-110" 
@@ -64,7 +60,7 @@ const Social: React.FC = () => {
           </div>
           
           <div className="pt-6">
-            <p className="text-xs text-black/40 font-light max-w-sm mx-auto leading-relaxed">
+            <p className="text-xs text-[var(--text-muted)] font-light max-w-sm mx-auto leading-relaxed">
               Open for creative partnerships, travel inquiries, and storytelling projects worldwide.
             </p>
           </div>

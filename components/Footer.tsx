@@ -1,4 +1,3 @@
-
 import React from 'react';
 
 const Footer: React.FC = () => {
@@ -9,10 +8,10 @@ const Footer: React.FC = () => {
   ];
 
   return (
-    <footer className="py-16 px-6 border-t border-black/5 bg-[#F8F8F6]">
+    <footer className="py-16 px-6 border-t border-[var(--glass-border)] bg-[var(--bg-color)] transition-theme">
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
         <div className="flex flex-col items-center md:items-start gap-4">
-          <div className="text-2xl font-bold serif tracking-tight">Vicky</div>
+          <div className="text-2xl font-bold serif tracking-tight text-[var(--text-color)]">Vicky</div>
           <div className="flex gap-4">
             {socials.map((social) => (
               <a 
@@ -20,7 +19,7 @@ const Footer: React.FC = () => {
                 href={social.url} 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="text-black/30 hover:text-[#7A8F7A] transition-colors"
+                className="text-[var(--text-dim)] hover:text-[#7A8F7A] transition-colors"
                 aria-label={social.name}
               >
                 <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
@@ -32,7 +31,7 @@ const Footer: React.FC = () => {
         </div>
         
         <div className="text-center md:text-right space-y-2">
-          <p className="text-sm text-black/40 font-light uppercase tracking-widest">
+          <p className="text-sm text-[var(--text-dim)] font-light uppercase tracking-widest">
             © 2026 Vicky. Capturing vibes, not just photos.
           </p>
           <p className="text-xs text-[#7A8F7A] font-medium tracking-tight">

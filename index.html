@@ -11,7 +11,7 @@
     <!-- SEO & Social Sharing -->
     <meta name="description" content="Vicky's photography portfolio. Capturing travel, nature, and cinematic stories through a professional lens." />
     <meta property="og:title" content="Vicky | Photographer & Storyteller" />
-    <meta property="og:description" content="Explore cinematic visual narratives and travel stories." />
+    <meta property="og:description" content="Explore cinematic visual narratives." />
     <meta property="og:image" content="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?q=80&w=1200" />
     <meta property="og:type" content="website" />
     <meta name="twitter:card" content="summary_large_image" />
@@ -25,40 +25,63 @@
         --bg-color: #F8F8F6;
         --text-color: #1C1C1C;
         --accent-color: #7A8F7A;
+        --glass-bg: rgba(0, 0, 0, 0.03);
+        --glass-border: rgba(0, 0, 0, 0.08);
+        --overlay-bg: rgba(255, 255, 255, 0.95);
+        --input-border: rgba(0, 0, 0, 0.1);
+        --text-muted: rgba(28, 28, 28, 0.6);
+        --text-dim: rgba(28, 28, 28, 0.3);
+        --placeholder-bg: rgba(122, 143, 122, 0.05);
       }
+      
+      .dark {
+        --bg-color: #0F0F0F;
+        --text-color: #F8F8F6;
+        --glass-bg: rgba(255, 255, 255, 0.03);
+        --glass-border: rgba(255, 255, 255, 0.08);
+        --overlay-bg: rgba(15, 15, 15, 0.98);
+        --input-border: rgba(255, 255, 255, 0.1);
+        --text-muted: rgba(248, 248, 246, 0.5);
+        --text-dim: rgba(248, 248, 246, 0.2);
+        --placeholder-bg: rgba(122, 143, 122, 0.1);
+      }
+      
       body {
         font-family: 'Inter', sans-serif;
         background-color: var(--bg-color);
         color: var(--text-color);
         scroll-behavior: smooth;
         overflow-x: hidden;
+        transition: background-color 0.5s ease, color 0.5s ease;
       }
+      
       h1, h2, h3, .serif {
         font-family: 'Playfair Display', serif;
       }
+
+      /* Custom Scrollbar */
+      ::-webkit-scrollbar {
+        width: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: var(--bg-color);
+      }
+      ::-webkit-scrollbar-thumb {
+        background: var(--glass-border);
+        border-radius: 10px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: var(--accent-color);
+      }
       
+      /* Grain Effect */
       .grain {
         position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
+        inset: 0;
         z-index: 9999;
         pointer-events: none;
         opacity: 0.04;
         background-image: url("https://www.transparenttextures.com/patterns/stardust.png");
-      }
-
-      .page-bg-image {
-        position: fixed;
-        inset: 0;
-        z-index: -2;
-        background-image: url('https://images.unsplash.com/photo-1542038784456-1ea8e935640e?q=80&w=2000&auto=format&fit=crop');
-        background-size: cover;
-        background-position: center;
-        opacity: 0.03;
-        filter: grayscale(100%);
-        pointer-events: none;
       }
 
       .paper-overlay {
@@ -66,55 +89,80 @@
         inset: 0;
         z-index: -1;
         background-image: url('https://www.transparenttextures.com/patterns/p6.png');
-        opacity: 0.2;
+        opacity: 0.1;
         pointer-events: none;
       }
 
+      /* Masonry Grid */
       .masonry-grid {
         column-count: 1;
-        column-gap: 1.5rem;
+        column-gap: 2rem;
       }
       @media (min-width: 640px) {
-        .masonry-grid {
-          column-count: 2;
-        }
+        .masonry-grid { column-count: 2; }
       }
       @media (min-width: 1024px) {
-        .masonry-grid {
-          column-count: 3;
-        }
+        .masonry-grid { column-count: 3; }
       }
       .masonry-item {
         break-inside: avoid;
-        margin-bottom: 1.5rem;
+        margin-bottom: 2rem;
       }
 
-      .floating-illus {
-        position: fixed;
-        width: 300px;
-        height: 300px;
-        opacity: 0.05;
-        z-index: -1;
-        pointer-events: none;
-        filter: contrast(0.5);
+      /* Transitions */
+      .section-reveal {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+      .section-reveal.active {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .transition-theme {
+        transition: all 0.5s ease;
+      }
+
+      /* Shimmer Animation */
+      @keyframes shimmer {
+        0% { transform: translateX(-100%); }
+        100% { transform: translateX(100%); }
+      }
+
+      .shimmer-placeholder {
+        position: relative;
+        overflow: hidden;
+        background-color: var(--placeholder-bg);
+      }
+
+      .shimmer-placeholder::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 255, 255, 0.1),
+          transparent
+        );
+        animation: shimmer 1.5s infinite;
       }
     </style>
   <script type="importmap">
 {
   "imports": {
-    "react": "https://esm.sh/react@^19.2.3",
     "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
     "react/": "https://esm.sh/react@^19.2.3/",
-    "@google/genai": "https://esm.sh/@google/genai@^1.37.0",
-    "vite": "https://esm.sh/vite@^7.3.1"
+    "react": "https://esm.sh/react@^19.2.3",
+    "vite": "https://esm.sh/vite@^7.3.1",
+    "@google/genai": "https://esm.sh/@google/genai@^1.38.0"
   }
 }
 </script>
 </head>
   <body>
     <div class="grain"></div>
-    <div class="page-bg-image"></div>
-    <div class="paper-overlay"></div>
     <div id="root"></div>
     <script type="module" src="/index.tsx"></script>
   </body>
